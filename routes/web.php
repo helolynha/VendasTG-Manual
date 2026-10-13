@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/clientes/edit/{pessoa_codigo}', [ClienteController::class, 'edit'])->name('clientes.edit')->middleware(['auth', 'verified']);
     Route::put('/clientes/update/{pessoa_codigo}', [ClienteController::class, 'update'])->name('clientes.update')->middleware(['auth', 'verified']);
     Route::get('/clientes/delete/{pessoa_codigo}', [ClienteController::class, 'delete'])->name('clientes.delete')->middleware(['auth', 'verified']);
+
+    Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index')->middleware(['auth', 'verified']);
+    Route::get('/produtos/create', [ProdutoController::class, 'create'])->name('produtos.create')->middleware(['auth', 'verified']);
+    Route::post('/produtos', [ProdutoController::class, 'store'])->name('produtos.store')->middleware(['auth', 'verified']);
+    Route::get('/produtos/edit/{codigo}', [ProdutoController::class, 'edit'])->name('produtos.edit')->middleware(['auth', 'verified']);
+    Route::put('/produtos/update/{codigo}', [ProdutoController::class, 'update'])->name('produtos.update')->middleware(['auth', 'verified']);
+    Route::get('/produtos/delete/{codigo}', [ProdutoController::class, 'delete'])->name('produtos.delete')->middleware(['auth', 'verified']);
 });
 
 Route::get('/teste', function () {

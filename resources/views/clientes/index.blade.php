@@ -19,7 +19,7 @@
                             <th>CPF</th>
                             <th>Nível de Fidelidade</th>
                             <th>Status</th>
-                            @if(auth()->user()->nivel == 'admin')
+                            @if(auth()->user()->nivel == 'adm')
                                 <th>Ações</th>
                             @endif
                         </tr>
@@ -32,7 +32,7 @@
                                 <td>{{ $cliente->pessoa->cpf ?? 'Não informado' }}</td>
                                 <td>{{ $cliente->nivel_fidelidade == 1 ? 'Bronze' : ($cliente->nivel_fidelidade == 2 ? 'Prata' : ($cliente->nivel_fidelidade == 3 ? 'Ouro' : 'Não informado')) }}</td>
                                 <td>{{ $cliente->pessoa->status == 1 ? 'Ativo' : ($cliente->pessoa->status == 2 ? 'Inativo' : 'Não informado') }}</td>
-                                @if(auth()->user()->nivel == 'admin')
+                                @if(auth()->user()->nivel == 'adm')
                                     <td>
                                         <a href="{{ route('clientes.edit', $cliente->pessoa_codigo) }}" class="btn btn-sm btn-info">Editar</a>
                                     </td>
