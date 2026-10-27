@@ -34,4 +34,9 @@ class User extends Authenticatable
     {
         return $this->senha_hash;
     }
+
+    public function vendedor()
+    {
+        return $this->belongsTo(Vendedor::class, 'pessoa_codigo');
+    }
 }

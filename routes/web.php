@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\PedidoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,6 +33,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/produtos/edit/{codigo}', [ProdutoController::class, 'edit'])->name('produtos.edit')->middleware(['auth', 'verified']);
     Route::put('/produtos/update/{codigo}', [ProdutoController::class, 'update'])->name('produtos.update')->middleware(['auth', 'verified']);
     Route::get('/produtos/delete/{codigo}', [ProdutoController::class, 'delete'])->name('produtos.delete')->middleware(['auth', 'verified']);
+
+    Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index')->middleware(['auth', 'verified']);
+    Route::get('/pedidos/create', [PedidoController::class, 'create'])->name('pedidos.create')->middleware(['auth', 'verified']);
+    Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store')->middleware(['auth', 'verified']);
+    Route::get('/pedidos/edit/{codigo}', [PedidoController::class, 'edit'])->name('pedidos.edit')->middleware(['auth', 'verified']);
+    Route::put('/pedidos/update/{codigo}', [PedidoController::class, 'update'])->name('pedidos.update')->middleware(['auth', 'verified']);
+    Route::get('/pedidos/delete/{codigo}', [PedidoController::class, 'delete'])->name('pedidos.delete')->middleware(['auth', 'verified']);
 });
 
 Route::get('/teste', function () {

@@ -12,7 +12,7 @@ class Produto extends Model
         'descricao',
         'preco',
         'estoque',
-        'status',
+        'status', 
         'categoria_codigo',
     ];
 
@@ -20,5 +20,4 @@ class Produto extends Model
     {
         return $this->belongsTo(Categoria::class, 'categoria_codigo');
     }
-
 }
